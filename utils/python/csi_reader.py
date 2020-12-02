@@ -9,10 +9,10 @@ UDP_HEADER_SIZE = 18 # bytes without csi flow
 from pylibpcap.pcap import rpcap as cap
 import numpy as np
 import json
-import plot
+import csi_plot as plot
 
 #FILE = "./example.pcap"
-FILE = "capture_output.pcap"
+FILE = "capture_output_bcm43455c0.pcap"
 import os
 #import CsiEntry
 CHIPS = ["bcm43455c0"]

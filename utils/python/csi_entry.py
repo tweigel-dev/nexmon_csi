@@ -1,8 +1,4 @@
-import matplotlib.pyplot as plt
 import json
-import math
-
-
 class CsiEntry( json.JSONDecoder):
     """docstring for CsiEntry"""
     def __init__(self):
@@ -77,11 +73,3 @@ class CsiEntry( json.JSONDecoder):
     def to_dict(self):
         return json.loads(self._to_json())
     
-
-def plot_ampli(csi_entry : CsiEntry):
-
-    amplitudes = [abs(csi_comp) for csi_comp in csi_entry.csi]
-    plt.plot(range(len(csi_entry.csi)), amplitudes, label="Antenna {}".format(csi_entry.rx))
-    
-    plt.xlabel('Subcarrier index')
-    plt.ylabel('amplitude')
