@@ -31,10 +31,8 @@ def extract_csi(udp_payload):
             comp_csi = complex(int(csi_hex[offset:offset+4].hex(),16),int(csi_hex[offset+5:offset+8].hex(), 16))
             csi_values.append(comp_csi)
         return csi_values
-    print(len(udp_payload))
-    print(udp_payload[0:18].hex())
-    print(udp_payload[4:10].hex())
-    print(udp_payload[10:11].hex())
+
+
     udp_dict ={}
     udp_dict["src_mac"]                 = udp_payload[4:10].hex()
     udp_dict["seq_nr"]                  = udp_payload[10:11].hex()
@@ -45,10 +43,7 @@ def extract_csi(udp_payload):
     print(udp_dict)
     udp_dict["csi"]              = format_csi(udp_payload[UDP_HEADER_SIZE:],CHIPS[0]) 
     udp_dict["csi_matrix_size"]         = len(udp_dict["csi"])
-    #print(udp_payload)
-    #print(pkt)
-    #print(udp_dict)
-    #print(udp_payload[4:10].hex())
+
     entry = plot.CsiEntry.from_dict(udp_dict)
     return entry
 if __name__ == "__main__":
